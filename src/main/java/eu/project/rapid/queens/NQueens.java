@@ -17,25 +17,16 @@ package eu.project.rapid.queens;
 
 import java.lang.reflect.Method;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.renderscript.RenderScript;
-import android.support.v4.app.ActivityCompat;
+//import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import eu.project.rapid.ac.DFE;
 import eu.project.rapid.ac.Remote;
 import eu.project.rapid.ac.Remoteable;
 import eu.project.rapid.ac.utils.Utils;
-import eu.project.rapid.demo.R;
-import eu.project.rapid.demo.board;
 
 //import static eu.project.rapid.ac.profilers.NetworkProfiler.context;
-import static org.spongycastle.asn1.x500.style.RFC4519Style.l;
-import static org.spongycastle.asn1.x500.style.RFC4519Style.st;
+
 
 public class NQueens extends Remoteable {
 
