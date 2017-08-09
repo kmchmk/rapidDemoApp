@@ -31,7 +31,7 @@ import eu.project.rapid.ac.Remote;
 import eu.project.rapid.ac.Remoteable;
 import eu.project.rapid.ac.utils.Utils;
 import eu.project.rapid.demo.R;
-import eu.project.rapid.demo.board;
+
 
 //import static eu.project.rapid.ac.profilers.NetworkProfiler.context;
 import static org.spongycastle.asn1.x500.style.RFC4519Style.l;
