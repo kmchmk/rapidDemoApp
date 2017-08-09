@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -232,6 +233,7 @@ private String brdrs ;
     // Show a spinning dialog while solving the puzzle
     ProgressDialog pd =
         ProgressDialog.show(StartExecution.this, "Working...", "Solving N Queens...", true, false);
+    long c1 =System.currentTimeMillis() ;
 
     @Override
     protected Integer doInBackground(Void... params) {
@@ -259,6 +261,8 @@ private String brdrs ;
 
     @Override
     protected void onPostExecute(Integer result) {
+      long c2 =System.currentTimeMillis() ;
+
       Log.i(TAG, "Finished execution");
       if (pd != null) {
         pd.dismiss();
@@ -266,7 +270,7 @@ private String brdrs ;
                 StartExecution.this).create();
 
         // Setting Dialog Title
-        alertDialog.setTitle("Alert Dialog");
+        alertDialog.setTitle("Processing Time : "+(c2-c1)+" ms");
 
         // Setting Dialog Message
         alertDialog.setMessage(brdrs);
@@ -274,7 +278,7 @@ private String brdrs ;
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int which) {
             // Write your code here to execute after dialog closed
-            Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
           }
         });
 
