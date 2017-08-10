@@ -33,6 +33,7 @@ public class NQueens extends Remoteable {
   private static final long serialVersionUID = 5687713591581731140L;
   private static final String TAG = "NQueens";
   private int N = 8;
+    private int x = 2;//added by Chanaka to test executions
   private int nrClones;
   private transient DFE dfe;
   private  String brdresult = "";
@@ -90,6 +91,32 @@ public class NQueens extends Remoteable {
       e.printStackTrace();
     }
     return result;
+  }
+
+  public int getSqure(int x){
+    this.x = x;
+      Method toExecute;
+      Class<?>[] paramTypes = {int.class};
+      Object[] paramValues = {x};
+
+      int result = 0;
+      try{
+          toExecute = this.getClass().getDeclaredMethod("localGetSquare", paramTypes);
+          result = (Integer) dfe.execute(toExecute, paramValues, this);
+      } catch (NoSuchMethodException e) {
+          e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+          e.printStackTrace();
+      } catch (IllegalAccessException e) {
+          e.printStackTrace();
+      }
+      return result;
+  }
+
+
+  @Remote
+    public int localGetSquare(int x){
+      return x * x;
   }
 
   @Remote
