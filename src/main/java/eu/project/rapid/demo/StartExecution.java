@@ -42,6 +42,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import eu.project.rapid.AlgoTest.AlgoTest;
 import eu.project.rapid.ac.DFE;
 import eu.project.rapid.ac.utils.Constants;
 import eu.project.rapid.common.Clone;
@@ -221,6 +223,58 @@ private String brdrs ;
       Log.i(TAG, "Finished execution");
       if (pd != null) {
         pd.dismiss();
+      }
+    }
+  }
+  public void onClickAlgoTestSolver(View v) {
+    new AlgoTestTask().execute();
+  }
+  private class AlgoTestTask extends AsyncTask<Void, Void, Integer> {
+    // Show a spinning dialog while solving the puzzle
+    ProgressDialog pd =
+            ProgressDialog.show(StartExecution.this, "Working...", "Solving AlgoTest...", true, false);
+    long c1 =System.currentTimeMillis() ;
+
+    @Override
+    protected Integer doInBackground(Void... params) {
+
+      Spinner nrQueensSpinner = (Spinner) findViewById(R.id.spinnerNrQueens);
+      int nrQueens = Integer.parseInt((String) nrQueensSpinner.getSelectedItem());
+
+      int result = -1;
+      AlgoTest algo = new AlgoTest(dfe, nrClones);
+
+      result = algo.solveAlgoTest(nrQueens);
+     // brdrs= algo.getbrdres() ;
+      Log.i(TAG,"-AlgoTest solved, solutions: " + result);
+      return result;
+    }
+
+    @Override
+    protected void onPostExecute(Integer result) {
+      long c2 =System.currentTimeMillis() ;
+
+      Log.i(TAG, "Finished execution AlgoTest");
+      if (pd != null) {
+        pd.dismiss();
+        AlertDialog alertDialog = new AlertDialog.Builder(
+                StartExecution.this).create();
+
+        // Setting Dialog Title
+        alertDialog.setTitle("Processing Time : "+(c2-c1)+" ms");
+
+        // Setting Dialog Message
+        alertDialog.setMessage(""+result);
+
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int which) {
+            // Write your code here to execute after dialog closed
+            // Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+          }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
       }
     }
   }

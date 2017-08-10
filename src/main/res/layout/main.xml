@@ -302,6 +302,13 @@
             android:text="@string/virusScanning" />
         -->
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAlgoTestSolver"
+            android:text="AlgoTest" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="165dp"
