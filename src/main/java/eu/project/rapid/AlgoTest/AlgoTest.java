@@ -79,8 +79,8 @@ public class AlgoTest extends Remoteable  {
         }
 
         @Remote
-        public long localSolveAlgoTest(int N) {
-                long result = 1;
+        public int localSolveAlgoTest(int N) {
+                int result = 1;
                 for (int i = 2; i <= N; i++) {
                     result *= i;
                 }
