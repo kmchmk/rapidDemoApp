@@ -28,6 +28,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -283,61 +284,59 @@ private String brdrs ;
     new NQueensTask().execute();
   }
 
-  private class NQueensTask extends AsyncTask<Void, Void, Integer> {
+  private class NQueensTask extends AsyncTask<Void, Void, ArrayList<byte[][]>> {
+      int nrQueens;
     // Show a spinning dialog while solving the puzzle
-    ProgressDialog pd =
-        ProgressDialog.show(StartExecution.this, "Working...", "Solving N Queens...", true, false);
-    long c1 =System.currentTimeMillis() ;
+    ProgressDialog pd = ProgressDialog.show(StartExecution.this, "Working...", "Solving N Queens...", true, false);
+    long c1;
 
     @Override
-    protected Integer doInBackground(Void... params) {
+    protected ArrayList<byte[][]> doInBackground(Void... params) {
 
       Spinner nrQueensSpinner = (Spinner) findViewById(R.id.spinnerNrQueens);
-      int nrQueens = Integer.parseInt((String) nrQueensSpinner.getSelectedItem());
+      nrQueens = Integer.parseInt((String) nrQueensSpinner.getSelectedItem());
 
-      int result = -1;
       NQueens puzzle = new NQueens(dfe, nrClones);
-
-      result = puzzle.solveNQueens(nrQueens);
-      brdrs= puzzle.getbrdres() ;
-      Log.d("log","DDDDd");
-
-     // TextView txt = (TextView) findViewById(R.id.textView) ;
-      Log.d("log","HHHHHHHHHH");
-     // txt.setText("Sameera");
-
-      Log.d("log","AAAAAA");
-
-
-      Log.i(TAG, nrQueens + "-Queens solved, solutions: " + result);
-      return result;
+      c1 =System.currentTimeMillis() ;
+      return puzzle.solveNQueens(nrQueens);
     }
 
     @Override
-    protected void onPostExecute(Integer result) {
+    protected void onPostExecute(ArrayList<byte[][]> result_board) {
       long c2 =System.currentTimeMillis() ;
 
       Log.i(TAG, "Finished execution");
       if (pd != null) {
         pd.dismiss();
-        AlertDialog alertDialog = new AlertDialog.Builder(
-                StartExecution.this).create();
+          int result = -1;
+          result = result_board.size();
 
-        // Setting Dialog Title
-        alertDialog.setTitle("Processing Time : "+(c2-c1)+" ms");
+          Log.i(TAG, nrQueens + "-Queens solved, solutions: " + result);
 
-        // Setting Dialog Message
-        alertDialog.setMessage(brdrs);
+//        AlertDialog alertDialog = new AlertDialog.Builder(
+//                StartExecution.this).create();
+//
+//        // Setting Dialog Title
+//        alertDialog.setTitle("Processing Time : "+(c2-c1)+" ms");
+//
+//        // Setting Dialog Message
+//        alertDialog.setMessage(brdrs);
+//
+//        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//          public void onClick(DialogInterface dialog, int which) {
+//            // Write your code here to execute after dialog closed
+//           // Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+//          }
+//        });
+//
+//        // Showing Alert Message
+//        alertDialog.show();
 
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int which) {
-            // Write your code here to execute after dialog closed
-           // Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
-          }
-        });
-
-        // Showing Alert Message
-        alertDialog.show();
+          Intent i = new Intent(StartExecution.this, Solution.class);
+          i.putExtra("solution", result_board);
+          i.putExtra("N", nrQueens);
+          i.putExtra("time",c2-c1);
+          startActivity(i);
       }
     }
   }

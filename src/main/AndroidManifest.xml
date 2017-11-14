@@ -24,8 +24,7 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="22" />
-        //tools:overrideLibrary="eu.project.rapid.ac,eu.project.rapid.gvirtus4a"
-
+    //tools:overrideLibrary="eu.project.rapid.ac,eu.project.rapid.gvirtus4a"
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
@@ -39,13 +38,12 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:icon="@drawable/icon_dark"
         android:label="@string/app_name">
         <activity
             android:name=".StartExecution"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -57,9 +55,9 @@
         </activity>
 
         <!-- This service is implemented in the library but should be declared here otherwise it can't be started. -->
-        <service android:name="eu.project.rapid.ac.d2d.D2DClientService"></service>
+        <service android:name="eu.project.rapid.ac.d2d.D2DClientService" />
 
-
+        <activity android:name=".Solution" />
     </application>
 
 </manifest>
