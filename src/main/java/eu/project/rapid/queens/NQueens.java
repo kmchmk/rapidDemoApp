@@ -146,7 +146,19 @@ public class NQueens extends Remoteable {
                                         continue;
                                     }
                                     for (int p = 0; p < N; p++) {
-                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -156,7 +168,7 @@ public class NQueens extends Remoteable {
             }
         }
         countSolutions.removeAll(Collections.singleton(null));
-        Log.i(TAG, "Found " + countSolutions + " solutions.");
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
         return countSolutions;
     }
 

@@ -47,13 +47,14 @@ public class Solution extends Activity {
                 final int col = x;
                 final ImageButton b = new ImageButton(this);
                 b.setEnabled(true);
-                if (result_board.get(currentSolution)[row][col] == 1) {
-//                    b.setBackgroundColor(Color.RED);
-                    b.setImageResource(R.drawable.queen);
-                }
-                else{
-                    b.setImageResource(R.drawable.blank);
-                }
+//                byte[][] temp = (byte[][])result_board.get(currentSolution);
+//                if (temp[row][col] == 1) {
+////                    b.setBackgroundColor(Color.RED);
+//                    b.setImageResource(R.drawable.queen);
+//                }
+//                else{
+//                    b.setImageResource(R.drawable.blank);
+//                }
                 r.addView(b);
             }
         }

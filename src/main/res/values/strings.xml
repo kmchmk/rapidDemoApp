@@ -39,6 +39,7 @@
     <string name="eightQueens">Solve NQueens</string>
     <string name="radioButtonStaticLocal">Always Local</string>
     <string name="radioButtonStaticRemote">Always Remote</string>
+    <string name="radioButtonDynamic">Dynamic</string>
     <string name="radioButtonHybrid">Hybrid</string>
     <string name="radioButtonEnergy">Energy</string>
     <string name="radioButtonTime">Delay (Execution Time + Communication)</string>

@@ -34,6 +34,7 @@
         android:layout_toRightOf="@+id/decrease"
         android:layout_toStartOf="@+id/increase"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
         tools:text="Solutions" />
@@ -54,17 +55,18 @@
         android:id="@+id/view_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/time"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:shrinkColumns="*"
-        tools:context=".DemoActivity"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/time"></TableLayout>
+        tools:context=".DemoActivity"></TableLayout>
 
     <TextView
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
         tools:text="time"
