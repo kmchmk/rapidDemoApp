@@ -115,26 +115,33 @@
                 android:text="@string/radioButtonStaticRemote" />
 
             <RadioButton
-                android:id="@+id/radio_exec_time"
+                android:id="@+id/radio_dynamic_offloading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioExecLocationChecked"
-                android:text="@string/radioButtonTime" />
+                android:text="@string/radioButtonDynamic" />
 
-            <RadioButton
-                android:id="@+id/radio_energy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onRadioExecLocationChecked"
-                android:text="@string/radioButtonEnergy" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/radio_exec_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="onRadioExecLocationChecked"-->
+                <!--android:text="@string/radioButtonTime" />-->
 
-            <RadioButton
-                android:id="@+id/radio_exec_time_energy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:onClick="onRadioExecLocationChecked"
-                android:text="@string/radioButtonTimeEnergy" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/radio_energy"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="onRadioExecLocationChecked"-->
+                <!--android:text="@string/radioButtonEnergy" />-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/radio_exec_time_energy"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:checked="false"-->
+                <!--android:onClick="onRadioExecLocationChecked"-->
+                <!--android:text="@string/radioButtonTimeEnergy" />-->
 
             <!--
                  <RadioButton

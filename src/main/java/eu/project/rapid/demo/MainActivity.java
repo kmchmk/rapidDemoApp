@@ -31,6 +31,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import eu.project.rapid.ac.DFE;
+import eu.project.rapid.ac.profilers.DeviceProfiler;
 import eu.project.rapid.common.RapidConstants.COMM_TYPE;
 import eu.project.rapid.common.RapidUtils;
 
@@ -73,9 +74,10 @@ public class MainActivity extends Activity {
     vmIp = prefs.getString(KEY_VM_IP, null);
     textVmIpAddress.setText(vmIp);
 
+//    DeviceProfiler.trackBatteryLevel();//added by Chanaka
 
   }
-
+/*
   public void onRadioCommunicationTypeChecked(View radioButton) {
 
     switch (radioButton.getId()) {
@@ -95,7 +97,7 @@ public class MainActivity extends Activity {
         break;
     }
   }
-
+*/
   // Watch for button clicks
   public void onStartButton(View v) {
     Intent intent = new Intent(v.getContext(), StartExecution.class);
@@ -149,7 +151,7 @@ public class MainActivity extends Activity {
       switch (checkedId) {
         case R.id.radioUseRapidYes:
           textVmIpAddress.setVisibility(View.GONE);
-          radioGroupStartAs.setVisibility(View.VISIBLE);
+//          radioGroupStartAs.setVisibility(View.VISIBLE);
           break;
 
         case R.id.radioUseRapidNo:

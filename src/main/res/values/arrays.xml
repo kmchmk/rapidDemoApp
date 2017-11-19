@@ -46,8 +46,8 @@
         <item name="6">6 Queens</item>
         <item name="7">7 Queens</item>
         <item name="8">8 Queens</item>
-        <item name="9">9 Queens</item>
-        <item name="10">10 Queens</item>
+        <!--<item name="9">9 Queens</item>-->
+        <!--<item name="10">10 Queens</item>-->
     </string-array>
     
     <integer-array name="nrQueensInt">
@@ -56,8 +56,8 @@
         <item name="6">6</item>
         <item name="7">7</item>
         <item name="8">8</item>
-        <item name="9">9</item>
-        <item name="10">10</item>
+        <!--<item name="9">9</item>-->
+        <!--<item name="10">10</item>-->
     </integer-array>
     
     <string-array name="nrQueensValues">
@@ -66,8 +66,8 @@
         <item name="6">6</item>
         <item name="7">7</item>
         <item name="8">8</item>
-        <item name="9">9</item>
-        <item name="10">10</item>
+        <!--<item name="9">9</item>-->
+        <!--<item name="10">10</item>-->
     </string-array>
     
     <string-array name="nrPhotosValues">

@@ -61,47 +61,47 @@
             android:text="@string/useRapidYes" />
     </RadioGroup>
 
-    <View style="@style/Divider" />
+    <!--<View style="@style/Divider" />-->
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="2dp"
-        android:gravity="center_vertical"
-        android:text="@string/textCommunicationType"
-        android:textColor="@android:color/holo_blue_dark" />
+    <!--<TextView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:text="@string/textCommunicationType"-->
+        <!--android:textColor="@android:color/holo_blue_dark" />-->
 
-    <RadioGroup
-        android:id="@+id/communicationRadioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="15dp" >
+    <!--<RadioGroup-->
+        <!--android:id="@+id/communicationRadioGroup"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:paddingBottom="15dp" >-->
 
-        <RadioButton
-            android:id="@+id/radio_ssl_communication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="onRadioCommunicationTypeChecked"
-            android:text="@string/radioSSLCommunication" />
-        
-        <RadioButton
-            android:id="@+id/radio_clear_communication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioCommunicationTypeChecked"
-            android:text="@string/radioClearCommunication" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/radio_ssl_communication"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:onClick="onRadioCommunicationTypeChecked"-->
+            <!--android:text="@string/radioSSLCommunication" />-->
+        <!---->
+        <!--<RadioButton-->
+            <!--android:id="@+id/radio_clear_communication"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="onRadioCommunicationTypeChecked"-->
+            <!--android:text="@string/radioClearCommunication" />-->
 
-        <RadioButton
-            android:id="@+id/radio_choose_from_annotation_communication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:onClick="onRadioCommunicationTypeChecked"
-            android:text="@string/radioChooseFromMethodAnnotation" />
-    </RadioGroup>
+        <!--<RadioButton-->
+            <!--android:id="@+id/radio_choose_from_annotation_communication"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:enabled="false"-->
+            <!--android:onClick="onRadioCommunicationTypeChecked"-->
+            <!--android:text="@string/radioChooseFromMethodAnnotation" />-->
+    <!--</RadioGroup>-->
 
     <View style="@style/Divider" />
 

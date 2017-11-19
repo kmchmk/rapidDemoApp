@@ -53,7 +53,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="useRapidText">Use Rapid Infrastructure or Direct connection with VM</string>
-    <string name="useRapidYes">With Rapid infrastructure</string>
+    <string name="useRapidYes">Local device only</string>
+    <string name="useRapidYes_">With Rapid infrastructure</string>
     <string name="useRapidNo">Direct connection to VM</string>
 
     <string name="textCommunicationType">Choose the communication type</string>

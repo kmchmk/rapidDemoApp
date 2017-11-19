@@ -78,7 +78,7 @@ public class NQueens extends Remoteable {
 
         ArrayList<byte[][]> result = new ArrayList<>();
         try {
-            toExecute = this.getClass().getDeclaredMethod("localSolveNQueens", paramTypes);
+            toExecute = this.getClass().getDeclaredMethod("localSolveNQueens" + N, paramTypes);
             dfe.setNoOfQueens(N);
             result = (ArrayList<byte[][]>) dfe.execute(toExecute, paramValues, this);
         } catch (SecurityException e) {
@@ -172,6 +172,385 @@ public class NQueens extends Remoteable {
         return countSolutions;
     }
 
+    @Remote
+    public ArrayList<byte[][]> localSolveNQueens4(int N) {
+        ArrayList<byte[][]> countSolutions = new ArrayList<>();
+        byte[][] board = new byte[N][N];
+
+        int start = 0, end = N;
+
+        if (Utils.isOffloaded()) {
+            // cloneId == 0 if this is the main clone
+            // or [1, nrClones-1] otherwise
+            int cloneId = Utils.readCloneHelperId();
+            int howManyCols = (int) ((N) / nrClones); // Integer division, we may
+            // loose some columns.
+            start = cloneId * howManyCols; // cloneId == 0 if this is the main clone
+            end = start + howManyCols;
+
+            // If this is the clone with the highest id let him take care
+            // of the columns not considered due to the integer division.
+            if (cloneId == nrClones - 1) {
+                end += N % nrClones;
+            }
+        }
+
+        Log.i(TAG, "Finding solutions for " + N + "-queens puzzle.");
+        Log.i(TAG, "Analyzing columns: " + start + "-" + (end - 1));
+
+        for (int i = start; i < end; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N; k++) {
+                    for (int l = 0; l < N; l++) {
+                        if (N == 4) {
+                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l}));
+                            continue;
+                        }
+                        for (int m = 0; m < N; m++) {
+                            if (N == 5) {
+                                countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m}));
+                                continue;
+                            }
+                            for (int n = 0; n < N; n++) {
+                                if (N == 6) {
+                                    countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n}));
+                                    continue;
+                                }
+                                for (int o = 0; o < N; o++) {
+                                    if (N == 7) {
+                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o}));
+                                        continue;
+                                    }
+                                    for (int p = 0; p < N; p++) {
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        countSolutions.removeAll(Collections.singleton(null));
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
+        return countSolutions;
+    }
+
+    @Remote
+    public ArrayList<byte[][]> localSolveNQueens5(int N) {
+        ArrayList<byte[][]> countSolutions = new ArrayList<>();
+        byte[][] board = new byte[N][N];
+
+        int start = 0, end = N;
+
+        if (Utils.isOffloaded()) {
+            // cloneId == 0 if this is the main clone
+            // or [1, nrClones-1] otherwise
+            int cloneId = Utils.readCloneHelperId();
+            int howManyCols = (int) ((N) / nrClones); // Integer division, we may
+            // loose some columns.
+            start = cloneId * howManyCols; // cloneId == 0 if this is the main clone
+            end = start + howManyCols;
+
+            // If this is the clone with the highest id let him take care
+            // of the columns not considered due to the integer division.
+            if (cloneId == nrClones - 1) {
+                end += N % nrClones;
+            }
+        }
+
+        Log.i(TAG, "Finding solutions for " + N + "-queens puzzle.");
+        Log.i(TAG, "Analyzing columns: " + start + "-" + (end - 1));
+
+        for (int i = start; i < end; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N; k++) {
+                    for (int l = 0; l < N; l++) {
+                        if (N == 4) {
+                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l}));
+                            continue;
+                        }
+                        for (int m = 0; m < N; m++) {
+                            if (N == 5) {
+                                countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m}));
+                                continue;
+                            }
+                            for (int n = 0; n < N; n++) {
+                                if (N == 6) {
+                                    countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n}));
+                                    continue;
+                                }
+                                for (int o = 0; o < N; o++) {
+                                    if (N == 7) {
+                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o}));
+                                        continue;
+                                    }
+                                    for (int p = 0; p < N; p++) {
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        countSolutions.removeAll(Collections.singleton(null));
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
+        return countSolutions;
+    }
+
+    @Remote
+    public ArrayList<byte[][]> localSolveNQueens6(int N) {
+        ArrayList<byte[][]> countSolutions = new ArrayList<>();
+        byte[][] board = new byte[N][N];
+
+        int start = 0, end = N;
+
+        if (Utils.isOffloaded()) {
+            // cloneId == 0 if this is the main clone
+            // or [1, nrClones-1] otherwise
+            int cloneId = Utils.readCloneHelperId();
+            int howManyCols = (int) ((N) / nrClones); // Integer division, we may
+            // loose some columns.
+            start = cloneId * howManyCols; // cloneId == 0 if this is the main clone
+            end = start + howManyCols;
+
+            // If this is the clone with the highest id let him take care
+            // of the columns not considered due to the integer division.
+            if (cloneId == nrClones - 1) {
+                end += N % nrClones;
+            }
+        }
+
+        Log.i(TAG, "Finding solutions for " + N + "-queens puzzle.");
+        Log.i(TAG, "Analyzing columns: " + start + "-" + (end - 1));
+
+        for (int i = start; i < end; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N; k++) {
+                    for (int l = 0; l < N; l++) {
+                        if (N == 4) {
+                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l}));
+                            continue;
+                        }
+                        for (int m = 0; m < N; m++) {
+                            if (N == 5) {
+                                countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m}));
+                                continue;
+                            }
+                            for (int n = 0; n < N; n++) {
+                                if (N == 6) {
+                                    countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n}));
+                                    continue;
+                                }
+                                for (int o = 0; o < N; o++) {
+                                    if (N == 7) {
+                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o}));
+                                        continue;
+                                    }
+                                    for (int p = 0; p < N; p++) {
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        countSolutions.removeAll(Collections.singleton(null));
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
+        return countSolutions;
+    }
+
+    @Remote
+    public ArrayList<byte[][]> localSolveNQueens7(int N) {
+        ArrayList<byte[][]> countSolutions = new ArrayList<>();
+        byte[][] board = new byte[N][N];
+
+        int start = 0, end = N;
+
+        if (Utils.isOffloaded()) {
+            // cloneId == 0 if this is the main clone
+            // or [1, nrClones-1] otherwise
+            int cloneId = Utils.readCloneHelperId();
+            int howManyCols = (int) ((N) / nrClones); // Integer division, we may
+            // loose some columns.
+            start = cloneId * howManyCols; // cloneId == 0 if this is the main clone
+            end = start + howManyCols;
+
+            // If this is the clone with the highest id let him take care
+            // of the columns not considered due to the integer division.
+            if (cloneId == nrClones - 1) {
+                end += N % nrClones;
+            }
+        }
+
+        Log.i(TAG, "Finding solutions for " + N + "-queens puzzle.");
+        Log.i(TAG, "Analyzing columns: " + start + "-" + (end - 1));
+
+        for (int i = start; i < end; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N; k++) {
+                    for (int l = 0; l < N; l++) {
+                        if (N == 4) {
+                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l}));
+                            continue;
+                        }
+                        for (int m = 0; m < N; m++) {
+                            if (N == 5) {
+                                countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m}));
+                                continue;
+                            }
+                            for (int n = 0; n < N; n++) {
+                                if (N == 6) {
+                                    countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n}));
+                                    continue;
+                                }
+                                for (int o = 0; o < N; o++) {
+                                    if (N == 7) {
+                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o}));
+                                        continue;
+                                    }
+                                    for (int p = 0; p < N; p++) {
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        countSolutions.removeAll(Collections.singleton(null));
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
+        return countSolutions;
+    }
+
+    @Remote
+    public ArrayList<byte[][]> localSolveNQueens8(int N) {
+        ArrayList<byte[][]> countSolutions = new ArrayList<>();
+        byte[][] board = new byte[N][N];
+
+        int start = 0, end = N;
+
+        if (Utils.isOffloaded()) {
+            // cloneId == 0 if this is the main clone
+            // or [1, nrClones-1] otherwise
+            int cloneId = Utils.readCloneHelperId();
+            int howManyCols = (int) ((N) / nrClones); // Integer division, we may
+            // loose some columns.
+            start = cloneId * howManyCols; // cloneId == 0 if this is the main clone
+            end = start + howManyCols;
+
+            // If this is the clone with the highest id let him take care
+            // of the columns not considered due to the integer division.
+            if (cloneId == nrClones - 1) {
+                end += N % nrClones;
+            }
+        }
+
+        Log.i(TAG, "Finding solutions for " + N + "-queens puzzle.");
+        Log.i(TAG, "Analyzing columns: " + start + "-" + (end - 1));
+
+        for (int i = start; i < end; i++) {
+            for (int j = 0; j < N; j++) {
+                for (int k = 0; k < N; k++) {
+                    for (int l = 0; l < N; l++) {
+                        if (N == 4) {
+                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l}));
+                            continue;
+                        }
+                        for (int m = 0; m < N; m++) {
+                            if (N == 5) {
+                                countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m}));
+                                continue;
+                            }
+                            for (int n = 0; n < N; n++) {
+                                if (N == 6) {
+                                    countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n}));
+                                    continue;
+                                }
+                                for (int o = 0; o < N; o++) {
+                                    if (N == 7) {
+                                        countSolutions .add( setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o}));
+                                        continue;
+                                    }
+                                    for (int p = 0; p < N; p++) {
+                                        if (N == 8) {
+                                            countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p}));
+                                            continue;
+                                        }
+                                        for (int q = 0; q < N; q++) {
+                                            if (N == 9) {
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q}));
+                                                continue;
+                                            }
+                                            for(int r = 0; r < N; r++){
+                                                countSolutions.add(setAndCheckBoard(board, new int[]{i, j, k, l, m, n, o, p, q, r}));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        countSolutions.removeAll(Collections.singleton(null));
+        Log.i(TAG, "Found " + "countSolutions.size()" + " solutions.");
+        return countSolutions;
+    }
     /**
      * When having more than one clone running the method there will be partial results which should
      * be combined to get the total result. This will be done automatically by the main clone by

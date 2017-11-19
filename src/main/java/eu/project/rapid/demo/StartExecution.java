@@ -298,10 +298,11 @@ public class StartExecution extends Activity implements DFE.DfeCallback {
 
             Spinner nrQueensSpinner = (Spinner) findViewById(R.id.spinnerNrQueens);
             nrQueens = Integer.parseInt((String) nrQueensSpinner.getSelectedItem());
-            Log.i("chanaka", Integer.toString(nrQueens));
+            Log.i("chanaka", "nrQueens: " + nrQueens);
             NQueens puzzle = new NQueens(dfe, nrClones);
             c1 = System.currentTimeMillis();
             return puzzle.solveNQueens(nrQueens);
+
         }
 
         @Override
@@ -425,9 +426,9 @@ public class StartExecution extends Activity implements DFE.DfeCallback {
             case R.id.radio_remote:
                 dfe.setUserChoice(Constants.LOCATION_REMOTE);
                 break;
-//            case R.id.dynamic_offloading:
-//                dfe.setUserChoice(Constants.LOCATION_DYNAMIC);
-//                break;
+            case R.id.radio_dynamic_offloading:
+                dfe.setUserChoice(Constants.LOCATION_DYNAMIC);
+                break;
 
             // case R.id.radio_hybrid:
             // dfe.setUserChoice(Constants.LOCATION_HYBRID);
